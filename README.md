@@ -188,7 +188,7 @@ The Tsiolkovsky rocket equation describes the relationship between the change in
 
 ### Calculating Fuel Mass
 
-To find the mass of the fuel required for the mission, you can rearrange the equation:
+To find the mass of the fuel (and oxidizer) required for the mission, you can rearrange the equation:
 
 **$m_{\text{fuel}} = m_0 - m_f$**
 
@@ -202,7 +202,7 @@ The **$m_f$** can be determined from the rocket equation by expressing it in ter
    **$m_{\text{fuel}} = m_0 - \frac{m_0}{e^{\frac{\Delta V}{I_{sp} \cdot g_0}}}$**
    **$m_{\text{fuel}} = m_0 \left(1 - \frac{1}{e^{\frac{\Delta V}{I_{sp} \cdot g_0}}}\right)$**
 
-This expression allows you to calculate the amount of fuel needed based on the desired **$\Delta V$**, the specific impulse of the rocket's propulsion system, and the initial mass of the rocket. If you have specific values for these parameters, you can substitute them into the formula to find the required fuel mass.
+This expression allows you to calculate the amount of fuel (and oxidizer) needed based on the desired **$\Delta V$**, the specific impulse of the rocket's propulsion system, and the initial mass of the rocket. If you have specific values for these parameters, you can substitute them into the formula to find the required fuel (and oxidizer) mass.
 
 ## Used Programming Languages 
 
