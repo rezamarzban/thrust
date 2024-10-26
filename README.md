@@ -161,6 +161,49 @@ The table below lists the typical oxidizer-to-fuel ratios (O/F) for different fu
 | Methane           | 3.5                     |
 | LPG (Propane)     | 3.64                    |
 
+## Tsiolkovsky Rocket Equation
+
+The Tsiolkovsky rocket equation describes the relationship between the change in velocity (**$\Delta V$**) of a rocket and its mass, taking into account the specific impulse (**$I_{sp}$**) of the propulsion system. The equation is given by:
+
+**$\Delta V = I_{sp} \cdot g_0 \cdot \ln\left(\frac{m_0}{m_f}\right)$**
+
+### Variables Explained
+
+- **$\Delta V$**: This is the total change in velocity that the rocket must achieve to complete its mission. It is a crucial parameter in spacecraft design and mission planning.
+  
+- **$I_{sp}$**: Specific impulse is a measure of how effectively a rocket uses propellant. It is defined as the thrust produced per unit weight flow rate of the propellant. Higher specific impulse values indicate more efficient engines. The units are usually seconds, and it can be calculated using:
+
+  **$I_{sp} = \frac{T}{\dot{m} \cdot g_0}$**
+
+  where:
+  - **$T$** is the thrust produced by the engine,
+  - **$\dot{m}$** is the mass flow rate of the propellant (the amount of propellant consumed per second),
+  - **$g_0$** is the acceleration due to gravity at sea level (approximately **$9.81 \, \text{m/s}^2$**).
+  
+- **$g_0$**: This is the standard acceleration due to gravity, which provides a reference point for comparing thrust to weight.
+
+- **$m_0$**: This is the initial mass of the rocket, which includes the mass of the structure, payload, and fuel.
+
+- **$m_f$**: This is the final mass of the rocket after the fuel has been burned.
+
+### Calculating Fuel Mass
+
+To find the mass of the fuel required for the mission, you can rearrange the equation:
+
+**$m_{\text{fuel}} = m_0 - m_f$**
+
+The **$m_f$** can be determined from the rocket equation by expressing it in terms of **$\Delta V$**:
+
+1. Rearrange the Tsiolkovsky equation to find **$m_f$**:
+   **$\frac{m_0}{m_f} = e^{\frac{\Delta V}{I_{sp} \cdot g_0}}$**
+   **$m_f = \frac{m_0}{e^{\frac{\Delta V}{I_{sp} \cdot g_0}}}$**
+
+2. Substitute **$m_f$** back into the equation for fuel mass:
+   **$m_{\text{fuel}} = m_0 - \frac{m_0}{e^{\frac{\Delta V}{I_{sp} \cdot g_0}}}$**
+   **$m_{\text{fuel}} = m_0 \left(1 - \frac{1}{e^{\frac{\Delta V}{I_{sp} \cdot g_0}}}\right)$**
+
+This expression allows you to calculate the amount of fuel needed based on the desired **$\Delta V$**, the specific impulse of the rocket's propulsion system, and the initial mass of the rocket. If you have specific values for these parameters, you can substitute them into the formula to find the required fuel mass.
+
 ## Used Programming Languages 
 
 - **C++**: A general-purpose programming language with object-oriented features, widely used for system/software development.
