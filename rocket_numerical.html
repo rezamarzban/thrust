@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Engine Calculation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .result p {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Rocket Engine Calculation</h1>
+
+    <div class="input-group">
+        <label for="p_t">Total Pressure (Pa):</label>
+        <input type="text" id="p_t" value="7000000">
+    </div>
+
+    <div class="input-group">
+        <label for="T_t">Total Temperature (K):</label>
+        <input type="text" id="T_t" value="3300">
+    </div>
+
+    <div class="input-group">
+        <label for="p_0">Free Stream Pressure (Pa):</label>
+        <input type="text" id="p_0" value="101325">
+    </div>
+
+    <div class="input-group">
+        <label for="A_star">Throat Area (m²):</label>
+        <input type="text" id="A_star" value="0.05">
+    </div>
+
+    <div class="input-group">
+        <label for="A_e">Exit Area (m²):</label>
+        <input type="text" id="A_e" value="0.1">
+    </div>
+
+    <div class="input-group">
+        <label for="gamma">Specific Heat Ratio:</label>
+        <input type="text" id="gamma" value="1.3">
+    </div>
+
+    <div class="input-group">
+        <label for="R">Gas Constant (J/kg·K):</label>
+        <input type="text" id="R" value="375">
+    </div>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function area_ratio(M_e, A_e, A_star, gamma) {
+        const term = (gamma + 1) / 2;
+        const exponent = (gamma + 1) / (2 * (gamma - 1));
+        return Math.pow(term, -exponent) * Math.pow((1 + (gamma - 1) / 2 * M_e * M_e), exponent) / M_e;
+    }
+
+    function calculate() {
+        // Get input values
+        const p_t = parseFloat(document.getElementById('p_t').value);
+        const T_t = parseFloat(document.getElementById('T_t').value);
+        const p_0 = parseFloat(document.getElementById('p_0').value);
+        const A_star = parseFloat(document.getElementById('A_star').value);
+        const A_e = parseFloat(document.getElementById('A_e').value);
+        const gamma = parseFloat(document.getElementById('gamma').value);
+        const R = parseFloat(document.getElementById('R').value);
+
+        // Common terms
+        const term = (gamma + 1) / 2;
+        const exponent = (gamma + 1) / (2 * (gamma - 1));
+
+        // 1. Calculate Mass Flow Rate
+        const mass_flow_rate = (A_star * p_t) / Math.sqrt(T_t) * Math.sqrt(gamma / R) * Math.pow(term, -exponent);
+
+        // 2. Bisection Method to find M_e
+        let M_e_lower = 0.1;
+        let M_e_upper = 20.0;
+        const tolerance = 1e-6;
+        let M_e_mid, ratio_mid;
+
+        for (let iter = 0; iter < 1000; iter++) {
+            M_e_mid = (M_e_lower + M_e_upper) / 2;
+            ratio_mid = area_ratio(M_e_mid, A_e, A_star, gamma);
+
+            if (Math.abs(ratio_mid - A_e / A_star) < tolerance) {
+                break;
+            } else if (ratio_mid < A_e / A_star) {
+                M_e_lower = M_e_mid;
+            } else {
+                M_e_upper = M_e_mid;
+            }
+        }
+
+        const M_e = M_e_mid;
+
+        // 3. Calculate Exit Temperature
+        const T_e = T_t / (1 + (gamma - 1) / 2 * M_e * M_e);
+
+        // 4. Calculate Exit Pressure
+        const p_e = p_t * Math.pow(1 + (gamma - 1) / 2 * M_e * M_e, -gamma / (gamma - 1));
+
+        // 5. Calculate Exit Velocity
+        const V_e = M_e * Math.sqrt(gamma * R * T_e);
+
+        // 6. Calculate Thrust
+        const F = mass_flow_rate * V_e + (p_e - p_0) * A_e;
+
+        // Display results
+        document.getElementById('result').innerHTML = `
+            <p>Mass Flow Rate (kg/s): ${mass_flow_rate.toFixed(2)}</p>
+            <p>Exit Mach Number: ${M_e.toFixed(2)}</p>
+            <p>Exit Temperature (K): ${T_e.toFixed(2)}</p>
+            <p>Exit Pressure (Pa): ${p_e.toFixed(2)}</p>
+            <p>Exit Velocity (m/s): ${V_e.toFixed(2)}</p>
+            <p>Thrust (N): ${F.toFixed(2)}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>

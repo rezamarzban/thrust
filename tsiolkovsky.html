@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tsiolkovsky Rocket Equation</title>
+    <script>
+        function calculateInitialMass() {
+            // Get input values
+            const mf = parseFloat(document.getElementById('mf').value);
+            const Isp = parseFloat(document.getElementById('Isp').value);
+            const deltaV = parseFloat(document.getElementById('deltaV').value);
+
+            // Define gravity constant
+            const g0 = 9.81; // Acceleration due to gravity in m/s^2
+
+            // Calculate initial mass
+            const m0 = mf * Math.exp(deltaV / (Isp * g0));
+
+            // Display result
+            document.getElementById('result').innerText = `Initial mass (m0): ${m0.toFixed(2)} kg`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Tsiolkovsky Rocket Equation Calculator</h1>
+    <label for="mf">Final Mass (mf) in kg:</label>
+    <input type="number" id="mf" value="1000" required>
+    <br><br>
+
+    <label for="Isp">Specific Impulse (Isp) in seconds:</label>
+    <input type="number" id="Isp" value="300" required>
+    <br><br>
+
+    <label for="deltaV">Delta V in m/s:</label>
+    <input type="number" id="deltaV" value="9500" required>
+    <br><br>
+
+    <button onclick="calculateInitialMass()">Calculate Initial Mass (m0)</button>
+    <h2 id="result"></h2>
+</body>
+</html>

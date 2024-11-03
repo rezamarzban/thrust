@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isp Values Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: #add8e6; /* Light blue for highlighting */
+        }
+    </style>
+</head>
+<body>
+
+<h2>Rocket Oxidizers and Fuels Isp Values (Vacuum)</h2>
+<p>Tap or click on the table to highlight its row and column.</p>
+    
+<table id="ispTable">
+    <thead>
+        <tr>
+            <th>Oxidizers / Fuels</th>
+            <th>Diborane (B2H6)</th>
+            <th>Triethylaluminum (TEA)</th>
+            <th>Lithium</th>
+            <th>Hydrazine (N2H4)</th>
+            <th>Monomethylhydrazine (MMH)</th>
+            <th>UDMH</th>
+            <th>Aluminum Powder</th>
+            <th>Magnesium Powder</th>
+            <th>Liquid Hydrogen (LH2)</th>
+            <th>Methane (CH4)</th>
+            <th>RP-1 (Refined Kerosene)</th>
+            <th>Gasoline</th>
+            <th>Diesel Fuel</th>
+            <th>Ethanol</th>
+            <th>Methanol</th>
+            <th>Propanol</th>
+            <th>LPG</th>
+            <th>PBAN</th>
+            <th>HTPB</th>
+            <th>APCP</th>
+            <th>Polyethylene</th>
+            <th>Sugar (Sucrose)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Fluorine (F2)</strong></td>
+            <td>350-380</td>
+            <td>350-380</td>
+            <td>360-390</td>
+            <td>340-370</td>
+            <td>340-370</td>
+            <td>340</td>
+            <td>310</td>
+            <td>310</td>
+            <td>450</td>
+            <td>400</td>
+            <td>300</td>
+            <td>250</td>
+            <td>200</td>
+            <td>300</td>
+            <td>300</td>
+            <td>320</td>
+            <td>290</td>
+            <td>300</td>
+            <td>320</td>
+            <td>340</td>
+            <td>280</td>
+            <td>220</td>
+        </tr>
+        <tr>
+            <td><strong>Chlorine Trifluoride (ClF3)</strong></td>
+            <td>380-390</td>
+            <td>380-390</td>
+            <td>380-390</td>
+            <td>360-370</td>
+            <td>360-370</td>
+            <td>360</td>
+            <td>340</td>
+            <td>340</td>
+            <td>460</td>
+            <td>410</td>
+            <td>320</td>
+            <td>260</td>
+            <td>210</td>
+            <td>310</td>
+            <td>310</td>
+            <td>330</td>
+            <td>300</td>
+            <td>310</td>
+            <td>330</td>
+            <td>350</td>
+            <td>290</td>
+            <td>230</td>
+        </tr>
+        <tr>
+            <td><strong>Liquid Oxygen (LOX)</strong></td>
+            <td>350-400</td>
+            <td>350-400</td>
+            <td>380-390</td>
+            <td>350-380</td>
+            <td>350-380</td>
+            <td>350</td>
+            <td>330</td>
+            <td>330</td>
+            <td>450</td>
+            <td>420</td>
+            <td>340</td>
+            <td>270</td>
+            <td>220</td>
+            <td>320</td>
+            <td>320</td>
+            <td>340</td>
+            <td>310</td>
+            <td>320</td>
+            <td>340</td>
+            <td>360</td>
+            <td>300</td>
+            <td>240</td>
+        </tr>
+        <tr>
+            <td><strong>Ozone (O3)</strong></td>
+            <td>350-380</td>
+            <td>350-380</td>
+            <td>360-390</td>
+            <td>340-370</td>
+            <td>340-370</td>
+            <td>340</td>
+            <td>310</td>
+            <td>310</td>
+            <td>450</td>
+            <td>400</td>
+            <td>300</td>
+            <td>250</td>
+            <td>200</td>
+            <td>300</td>
+            <td>300</td>
+            <td>320</td>
+            <td>290</td>
+            <td>300</td>
+            <td>320</td>
+            <td>340</td>
+            <td>280</td>
+            <td>220</td>
+        </tr>
+        <tr>
+            <td><strong>Nitrogen Tetroxide (N2O4)</strong></td>
+            <td>350-380</td>
+            <td>350-380</td>
+            <td>360-390</td>
+            <td>340-370</td>
+            <td>340-370</td>
+            <td>340</td>
+            <td>310</td>
+            <td>310</td>
+            <td>450</td>
+            <td>400</td>
+            <td>300</td>
+            <td>250</td>
+            <td>200</td>
+            <td>300</td>
+            <td>300</td>
+            <td>320</td>
+            <td>290</td>
+            <td>300</td>
+            <td>320</td>
+            <td>340</td>
+            <td>280</td>
+            <td>220</td>
+        </tr>
+        <tr>
+            <td><strong>Ammonium Perchlorate (NH4ClO4)</strong></td>
+            <td>260-350</td>
+            <td>260-350</td>
+            <td>310-340</td>
+            <td>310-330</td>
+            <td>310-330</td>
+            <td>310</td>
+            <td>290</td>
+            <td>280</td>
+            <td>410</td>
+            <td>370</td>
+            <td>290</td>
+            <td>240</td>
+            <td>190</td>
+            <td>290</td>
+            <td>290</td>
+            <td>310</td>
+            <td>280</td>
+            <td>290</td>
+            <td>310</td>
+            <td>330</td>
+            <td>270</td>
+            <td>210</td>
+        </tr>
+        <tr>
+            <td><strong>Hydrogen Peroxide (H2O2)</strong></td>
+            <td>250-310</td>
+            <td>250-310</td>
+            <td>290-310</td>
+            <td>280-300</td>
+            <td>280-300</td>
+            <td>280</td>
+            <td>270</td>
+            <td>260</td>
+            <td>400</td>
+            <td>360</td>
+            <td>280</td>
+            <td>230</td>
+            <td>180</td>
+            <td>270</td>
+            <td>270</td>
+            <td>290</td>
+            <td>260</td>
+            <td>270</td>
+            <td>290</td>
+            <td>310</td>
+            <td>250</td>
+            <td>200</td>
+        </tr>
+        <tr>
+            <td><strong>Nitrous Oxide (N2O)</strong></td>
+            <td>250-330</td>
+            <td>250-330</td>
+            <td>300-330</td>
+            <td>290-310</td>
+            <td>290-310</td>
+            <td>290</td>
+            <td>280</td>
+            <td>270</td>
+            <td>410</td>
+            <td>370</td>
+            <td>290</td>
+            <td>240</td>
+            <td>190</td>
+            <td>280</td>
+            <td>280</td>
+            <td>300</td>
+            <td>270</td>
+            <td>280</td>
+            <td>300</td>
+            <td>320</td>
+            <td>260</td>
+            <td>210</td>
+        </tr>
+        <tr>
+            <td><strong>Nitric Acid (HNO3)</strong></td>
+            <td>250-330</td>
+            <td>250-330</td>
+            <td>300-330</td>
+            <td>290-310</td>
+            <td>290-310</td>
+            <td>290</td>
+            <td>280</td>
+            <td>270</td>
+            <td>410</td>
+            <td>370</td>
+            <td>290</td>
+            <td>240</td>
+            <td>190</td>
+            <td>280</td>
+            <td>280</td>
+            <td>300</td>
+            <td>270</td>
+            <td>280</td>
+            <td>300</td>
+            <td>320</td>
+            <td>260</td>
+            <td>210</td>
+        </tr>
+        <tr>
+            <td><strong>Ammonium Nitrate (NH4NO3)</strong></td>
+            <td>250-330</td>
+            <td>250-330</td>
+            <td>300-330</td>
+            <td>290-310</td>
+            <td>290-310</td>
+            <td>290</td>
+            <td>280</td>
+            <td>270</td>
+            <td>410</td>
+            <td>370</td>
+            <td>290</td>
+            <td>240</td>
+            <td>190</td>
+            <td>280</td>
+            <td>280</td>
+            <td>300</td>
+            <td>270</td>
+            <td>280</td>
+            <td>300</td>
+            <td>320</td>
+            <td>260</td>
+            <td>210</td>
+        </tr>
+        <tr>
+            <td><strong>Potassium Chlorate (KClO3)</strong></td>
+            <td>250-350</td>
+            <td>250-350</td>
+            <td>320-350</td>
+            <td>310-320</td>
+            <td>310-320</td>
+            <td>310</td>
+            <td>290</td>
+            <td>280</td>
+            <td>420</td>
+            <td>370</td>
+            <td>290</td>
+            <td>240</td>
+            <td>190</td>
+            <td>280</td>
+            <td>280</td>
+            <td>300</td>
+            <td>270</td>
+            <td>280</td>
+            <td>300</td>
+            <td>320</td>
+            <td>260</td>
+            <td>210</td>
+        </tr>
+        <tr>
+            <td><strong>Sodium Chlorate (NaClO3)</strong></td>
+            <td>250-350</td>
+            <td>250-350</td>
+            <td>320-350</td>
+            <td>310-320</td>
+            <td>310-320</td>
+            <td>310</td>
+            <td>290</td>
+            <td>280</td>
+            <td>420</td>
+            <td>370</td>
+            <td>290</td>
+            <td>240</td>
+            <td>190</td>
+            <td>280</td>
+            <td>280</td>
+            <td>300</td>
+            <td>270</td>
+            <td>280</td>
+            <td>300</td>
+            <td>320</td>
+            <td>260</td>
+            <td>210</td>
+        </tr>
+        <tr>
+            <td><strong>Potassium Nitrate (KNO3)</strong></td>
+            <td>250-340</td>
+            <td>250-340</td>
+            <td>310-340</td>
+            <td>310-320</td>
+            <td>310-320</td>
+            <td>310</td>
+            <td>290</td>
+            <td>280</td>
+            <td>400</td>
+            <td>360</td>
+            <td>280</td>
+            <td>230</td>
+            <td>180</td>
+            <td>270</td>
+            <td>270</td>
+            <td>290</td>
+            <td>260</td>
+            <td>270</td>
+            <td>290</td>
+            <td>310</td>
+            <td>250</td>
+            <td>200</td>
+        </tr>
+        <tr>
+            <td><strong>Sodium Nitrate (NaNO3)</strong></td>
+            <td>250-340</td>
+            <td>250-340</td>
+            <td>310-340</td>
+            <td>310-320</td>
+            <td>310-320</td>
+            <td>310</td>
+            <td>290</td>
+            <td>280</td>
+            <td>400</td>
+            <td>360</td>
+            <td>280</td>
+            <td>230</td>
+            <td>180</td>
+            <td>270</td>
+            <td>270</td>
+            <td>290</td>
+            <td>260</td>
+            <td>270</td>
+            <td>290</td>
+            <td>310</td>
+            <td>250</td>
+            <td>200</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    const table = document.getElementById('ispTable');
+
+    table.addEventListener('click', function (event) {
+        // Remove existing highlights
+        const highlightedCells = table.getElementsByClassName('highlight');
+        while (highlightedCells.length > 0) {
+            highlightedCells[0].classList.remove('highlight');
+        }
+
+        const cell = event.target;
+        if (cell.tagName === 'TD' || cell.tagName === 'TH') {
+            const rowIndex = cell.parentNode.rowIndex;
+            const colIndex = cell.cellIndex;
+
+            // Highlight the clicked cell
+            cell.classList.add('highlight');
+
+            // Highlight the entire row
+            const row = table.rows[rowIndex];
+            for (let i = 0; i < row.cells.length; i++) {
+                row.cells[i].classList.add('highlight');
+            }
+
+            // Highlight the entire column
+            for (let i = 0; i < table.rows.length; i++) {
+                table.rows[i].cells[colIndex].classList.add('highlight');
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
